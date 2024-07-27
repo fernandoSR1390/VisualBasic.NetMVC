@@ -1,0 +1,66 @@
+﻿
+@{
+    Layout = "_Layout";
+}
+
+@{
+    int[] diasFeriados = { 1, 17, 24, 30 };
+    string titulo = "Página de Ejemplo";
+    int dia = DateTime.Now.Day;
+    int mes = DateTime.Now.Month;
+    int año = DateTime.Now.Year;
+    string cadena;
+    if (dia > 15)
+    {
+        cadena = "Estamos en la segunda parte del mes";
+    }
+    else
+    {
+        cadena = "Estamos en la primer parte del mes";
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h2>@titulo</h2>
+        <p>Fecha:@dia/@mes/@año</p>
+        <p>@cadena</p>
+    </div>
+
+    <div>
+        <h1>Dias feriados.</h1>
+        <ul>
+            @foreach (var dia1 in diasFeriados)
+            {
+                <p>Dia:@dia1</p>
+            }
+        </ul>
+    </div>
+
+    <div>
+        <p><a href="/Example/FormularioVisita">Dejar comentarios en el libro de visitas.</a></p>
+        <p><a href="/Example/ListadoVisitas">Comentarios de visitantes.</a></p>
+    </div>
+
+    <div>
+        <table border="1">
+            @for (int fila = 1; fila <= 12; fila++)
+            {
+                <tr>
+                    @for (int columna = 1; columna <= 10; columna++)
+                    {
+                        <td>@fila * @columna = @(fila * columna)</td>
+                    }
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>
